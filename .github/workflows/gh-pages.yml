@@ -28,6 +28,7 @@ jobs:
 
       - name: Deploy to Github Pages
         uses: crazy-max/ghaction-github-pages@v1.3.0
+        if: success()
         with:
           # Git branch where assets will be deployed
           target_branch: gh-pages
@@ -35,3 +36,5 @@ jobs:
           keep_history: true
           # Build directory to deploy
           build_dir: dist
+        env: 
+          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
