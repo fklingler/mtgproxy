@@ -31,6 +31,10 @@ export enum ScryfallLayout {
      */
     saga = "saga",
     /**
+     * Adventure-type cards.
+     */
+    adventure = "adventure",
+    /**
      * Plane and Phenomenon-type cards.
      */
     planar = "planar",
@@ -61,5 +65,13 @@ export enum ScryfallLayout {
     /**
      * Host-type cards.
      */
-    host = "host"
+    host = "host",
+    /**
+     * Art Series collectable double-faced cards.
+     */
+    art_series = "art_series",
+    /**
+     * A Magic card with two sides that are unrelated.
+     */
+    double_sided = "double_sided"
 }

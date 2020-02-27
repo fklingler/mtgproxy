@@ -3,11 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>MTG Proxy</title>
+    <link href="https://fonts.googleapis.com/css?family=Incosolata|Open+Sans" rel="stylesheet">
     <script src="webcomponents/webcomponents-loader.js"></script>
+    <style>
+        * {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0 0 1em;
+            padding: 0;
+            border: 0;
+        }
+
+        p {
+            font-size: 0.7em;
+        }
+
+        .container {
+            text-align: center;
+            margin: 0 auto;
+            width: 25em;
+        }
+    </style>
 </head>
 <body>
 
-<mtgp-index-form></mtgp-index-form>
+<div class="container">
+    <mtgp-index-form></mtgp-index-form>
+    <p>Powered by <a href="https://scryfall.com">Scryfall</a>.</p>
+    <p>Please report any errors to the issue tracker on my <a href="https://github.com/fklingler/mtgproxy">Github
+        project page</a>.</p>
+</div>
 
 </body>
 </html>

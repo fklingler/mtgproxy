@@ -7,7 +7,7 @@
 It uses the amazing [Scryfall](https://www.scryfall.com) API.
 Thanks to [Harubex](https://github.com/Harubex) and its [scryfall](https://github.com/Harubex/scryfall) project for the [types](https://github.com/Harubex/scryfall/tree/master/src).
 
-It is inspired by the [proxygen project by Dryvnt](https://gitlab.com/Dryvnt/proxygen).
+It is inspired by the [proxygen project by Dryvnt](https://gitlab.com/Dryvnt/proxygen). The card templates are directly adapted from this project.
 
 ## Development
 

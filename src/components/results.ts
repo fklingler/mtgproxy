@@ -1,5 +1,5 @@
-import { LitElement, html, customElement, property } from 'lit-element';
-import './components/result-card';
+import { customElement, html, LitElement, property } from 'lit-element';
+import './results-card';
 
 type Cards = Array<{ name: string, count: number }>;
 
@@ -10,7 +10,7 @@ class ResultsElement extends LitElement {
 
     render() {
         return html`${this.cards.map(card =>
-            html`<mtgp-result-card name="${card.name}" count="${card.count}"></mtgp-result-card>`
+            html`<mtgp-results-card name="${card.name}" count="${card.count}"></mtgp-results-card>`
         )}`;
     }
 
@@ -24,7 +24,7 @@ class ResultsElement extends LitElement {
 
     splitCardsInput(input: string): Cards {
         return input.match(/[^\r\n]+/g).map(line => {
-            const regex = /^((?<count>[\d]+)\s)?(?<name>[\w\s]+)/g;
+            const regex = /^((?<count>[\d]+)x?\s)?(?<name>.+)/gi;
             const match = regex.exec(line.trim());
 
             if (!match?.groups) { return void 0; }

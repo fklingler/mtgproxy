@@ -1,1 +1,1 @@
-import 'components/results';
+import './components/results';
