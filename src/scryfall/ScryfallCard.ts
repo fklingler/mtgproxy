@@ -1,10 +1,9 @@
-import { ScryfallCardFace } from "./ScryfallCardFace";
-import { ScryfallLayout } from "./ScryfallLayout";
-import { ScryfallImages } from "./ScryfallImages";
-import { ScryfallColor } from "./ScryfallColor";
-import { ScryfallUUID } from "./ScryfallUUID";
-import { ScryfallURI } from "./ScryfallURI";
-
+import { ScryfallCardFace } from './ScryfallCardFace';
+import { ScryfallLayout } from './ScryfallLayout';
+import { ScryfallImages } from './ScryfallImages';
+import { ScryfallColor } from './ScryfallColor';
+import { ScryfallUUID } from './ScryfallUUID';
+import { ScryfallURI } from './ScryfallURI';
 
 /**
  * Card objects represent individual Magic cards that players can obtain and add to their collection (with a few minor exceptions).
@@ -16,7 +15,7 @@ export interface ScryfallCard {
     /**
      * Object field - should equal "card".
      */
-    object: "card";
+    object: 'card';
     /**
      * A unique ID for this card in Scryfall’s database.
      */
@@ -46,7 +45,7 @@ export interface ScryfallCard {
      */
     uri: ScryfallURI;
     /**
-     * 	A link to this card’s permapage on Scryfall’s website.
+     *    A link to this card’s permapage on Scryfall’s website.
      */
     scryfall_uri: ScryfallURI;
     /**
@@ -54,7 +53,7 @@ export interface ScryfallCard {
      */
     prints_search_uri: ScryfallURI;
     /**
-     * 	A link to this card’s rulings on Scryfall’s API.
+     *    A link to this card’s rulings on Scryfall’s API.
      */
     rulings_uri: ScryfallURI;
 
@@ -146,16 +145,17 @@ export interface ScryfallCard {
     legalities: {
         standard: Legality,
         future: Legality,
-        frontier: Legality,
+        historic: Legality,
+        pioneer: Legality,
         modern: Legality,
         legacy: Legality,
         pauper: Legality,
         vintage: Legality,
         penny: Legality,
         commander: Legality,
-        "1v1": Legality,
+        brawl: Legality,
         duel: Legality,
-        brawl: Legality
+        oldschool: Legality
     };
     /**
      * Whether or not this card is on the Reserved List.
@@ -216,7 +216,7 @@ export interface ScryfallCard {
     /**
      * This card’s rarity. One of common, uncommon, rare, or mythic.
      */
-    rarity: "common", "uncommon", "rare", "mythic";
+    rarity: 'common' | 'uncommon' | 'rare' | 'mythic';
     /**
      * The flavor text of this card, if any.
      */
@@ -232,7 +232,11 @@ export interface ScryfallCard {
     /**
      * This card’s frame layout.
      */
-    frame: "1993" | "1997" | "2003" | "2015" | "future"
+    frame: '1993' | '1997' | '2003' | '2015' | 'future'
+    /**
+     * This card's frame effects.
+     */
+    frame_effects?: FrameEffect[];
     /**
      * True if this card’s artwork is larger than normal.
      */
@@ -244,7 +248,7 @@ export interface ScryfallCard {
     /**
      * This card’s border color.
      */
-    border_color: "black" | "borderless" | "gold" | "silver" | "white";
+    border_color: 'black' | 'borderless' | 'gold' | 'silver' | 'white';
     /**
      * This card’s story spotlight number, if any.
      */
@@ -253,18 +257,6 @@ export interface ScryfallCard {
      * A URL to this cards’s story article, if any.
      */
     story_spotlight_uri?: ScryfallURI;
-    /**
-     * Whether or not this card is timeshifted.
-     */
-    timeshifted: boolean;
-    /**
-     * Whether or not this card is colorshifted.
-     */
-    colorshifted: boolean;
-    /**
-     * Whether or not this card is from the future (i.e. a future-bordered card from Time Spiral block).
-     */
-    futureshifted: boolean;
 
     // Undocumented?
 
@@ -277,17 +269,34 @@ export interface ScryfallCard {
      */
     scryfall_set_uri: ScryfallURI;
     /**
-     * The current price of this card in USD, if any. Does not exist for digital-only cards.
+     * An object describing the prices of the card in many currencies
      */
-    usd?: string;
+    prices: {
+        /**
+         * The current price of this card in USD, if any. Does not exist for digital-only cards.
+         */
+        usd?: string;
+        /**
+         * The current price of this card in foil in USD, if any. Does not exist for digital-only cards.
+         */
+        usd_foil?: string;
+        /**
+         * The current price of this card in EUR, if any. Does not exist for digital-only cards.
+         */
+        eur?: string;
+        /**
+         * The current price of this card in Magic Online Tickets, if any. Does not exist for print-only cards.
+         */
+        tix?: string;
+    },
     /**
-     * The current price of this card in EUR, if any. Does not exist for digital-only cards.
+     * An object describing when and where the card has been previewed.
      */
-    eur?: string;
-    /**
-     * The current price of this card in Magic Online Tickets, if any. Does not exist for print-only cards.
-     */
-    tix?: string;
+    preview?: {
+        source?: string;
+        source_uri?: string;
+        previewed_at?: string;
+    },
     /**
      * Links to external resources for this card.
      */
@@ -309,44 +318,22 @@ export interface ScryfallCard {
          */
         mtgtop8: ScryfallURI
     },
-    /**
-     * Links to external sites where this card can be purchased.
-     */
-    purchase_uris: {
-        /**
-         * A link to this card on Amazon.
-         */
-        amazon: ScryfallURI,
-        /**
-         * A link to this card on Ebay.
-         */
-        ebay: ScryfallURI,
-        /**
-         * A link to this card on TCGPlayer.
-         */
-        tcgplayer: ScryfallURI,
-        /**
-         * A link to this card on MagicCardMarket.
-         */
-        magiccardmarket: ScryfallURI,
-        /**
-         * A link to this card on Cardhoarder.
-         */
-        cardhoarder: ScryfallURI,
-        /**
-         * A link to this card on Card Kingdom.
-         */
-        card_kingdom: ScryfallURI,
-        /**
-         * A link to this card on MTGO Traders.
-         */
-        mtgo_traders: ScryfallURI,
-        /**
-         * A link to this card on CoolStuffInc.
-         */
-        coolstuffinc: ScryfallURI
-    }
-
 }
 
-export type Legality = "legal" | "not_legal" | "banned" | "restricted";
+export type Legality = 'legal' | 'not_legal' | 'banned' | 'restricted';
+export type FrameEffect =
+    'legendary'
+    | 'miracle'
+    | 'nyxtouched'
+    | 'draft'
+    | 'devoid'
+    | 'tombstone'
+    | 'colorshifted'
+    | 'inverted'
+    | 'sunmoondfc'
+    | 'compasslanddfc'
+    | 'originpwdfc'
+    | 'mooneldrazidfc'
+    | 'moonreversemoondfc'
+    | 'showcase'
+    | 'extendedart';
