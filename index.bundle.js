@@ -40,7 +40,7 @@ const h=(t,e)=>`${t}--${e}`;let p=!0;void 0===window.ShadyCSS?p=!1:void 0===wind
  * subject to an additional IP rights grant found at
  * http://polymer.github.io/PATENTS.txt
  */
-const x=t=>e=>"function"==typeof e?((t,e)=>(window.customElements.define(t,e),e))(t,e):((t,e)=>{const{kind:n,elements:s}=e;return{kind:n,elements:s,finisher(e){window.customElements.define(t,e)}}})(t,e),P=(t,e)=>"method"!==e.kind||!e.descriptor||"value"in e.descriptor?{kind:"field",key:Symbol(),placement:"own",descriptor:{},initializer(){"function"==typeof e.initializer&&(this[e.key]=e.initializer.call(this))},finisher(n){n.createProperty(e.key,t)}}:Object.assign({},e,{finisher(n){n.createProperty(e.key,t)}});function C(t){return(e,n)=>void 0!==n?((t,e,n)=>{e.constructor.createProperty(n,t)})(t,e,n):P(t,e)}const N="adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,T=Symbol();class O{constructor(t,e){if(e!==T)throw new Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t}get styleSheet(){return void 0===this._styleSheet&&(N?(this._styleSheet=new CSSStyleSheet,this._styleSheet.replaceSync(this.cssText)):this._styleSheet=null),this._styleSheet}toString(){return this.cssText}}const E=(t,...e)=>{const n=e.reduce((e,n,s)=>e+(t=>{if(t instanceof O)return t.cssText;if("number"==typeof t)return t;throw new Error(`Value passed to 'css' function must be a 'css' function result: ${t}. Use 'unsafeCSS' to pass non-literal values, but\n            take care to ensure page security.`)})(n)+t[s+1],t[0]);return new O(n,T)};n.d(e,"a",(function(){return j})),n.d(e,"c",(function(){return x})),n.d(e,"e",(function(){return C})),n.d(e,"d",(function(){return s.d})),n.d(e,"b",(function(){return E})),
+const x=t=>e=>"function"==typeof e?((t,e)=>(window.customElements.define(t,e),e))(t,e):((t,e)=>{const{kind:n,elements:s}=e;return{kind:n,elements:s,finisher(e){window.customElements.define(t,e)}}})(t,e),P=(t,e)=>"method"!==e.kind||!e.descriptor||"value"in e.descriptor?{kind:"field",key:Symbol(),placement:"own",descriptor:{},initializer(){"function"==typeof e.initializer&&(this[e.key]=e.initializer.call(this))},finisher(n){n.createProperty(e.key,t)}}:Object.assign({},e,{finisher(n){n.createProperty(e.key,t)}});function C(t){return(e,n)=>void 0!==n?((t,e,n)=>{e.constructor.createProperty(n,t)})(t,e,n):P(t,e)}const N="adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,O=Symbol();class T{constructor(t,e){if(e!==O)throw new Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t}get styleSheet(){return void 0===this._styleSheet&&(N?(this._styleSheet=new CSSStyleSheet,this._styleSheet.replaceSync(this.cssText)):this._styleSheet=null),this._styleSheet}toString(){return this.cssText}}const E=(t,...e)=>{const n=e.reduce((e,n,s)=>e+(t=>{if(t instanceof T)return t.cssText;if("number"==typeof t)return t;throw new Error(`Value passed to 'css' function must be a 'css' function result: ${t}. Use 'unsafeCSS' to pass non-literal values, but\n            take care to ensure page security.`)})(n)+t[s+1],t[0]);return new T(n,O)};n.d(e,"a",(function(){return j})),n.d(e,"c",(function(){return x})),n.d(e,"e",(function(){return C})),n.d(e,"d",(function(){return s.d})),n.d(e,"b",(function(){return E})),
 /**
  * @license
  * Copyright (c) 2017 The Polymer Project Authors. All rights reserved.
@@ -222,7 +222,13 @@ class r{constructor(t,e,n){this.__parts=[],this.template=t,this.processor=e,this
         }
         `}render(){return s.d`
         <form action="results.html" method="get">
-            <textarea name="cards" class="cards"></textarea>
+            <textarea name="cards" class="cards">
+1 Black Lotus
+2x Birds of Paradise
+Oko, Thief of Crowns
+Bolas's Citadel
+Realm-Cloaked Giant // Cast Off
+            </textarea>
             <button type="submit">Get the proxies!</button>
         </form>
         `}};i=function(t,e,n,s){var i,r=arguments.length,o=r<3?e:null===s?s=Object.getOwnPropertyDescriptor(e,n):s;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)o=Reflect.decorate(t,e,n,s);else for(var a=t.length-1;a>=0;a--)(i=t[a])&&(o=(r<3?i(o):r>3?i(e,n,o):i(e,n))||o);return r>3&&o&&Object.defineProperty(e,n,o),o}([Object(s.c)("mtgp-index-form")],i)}]);
