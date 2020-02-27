@@ -1,5 +1,7 @@
 # [MTG Proxy](https://fklingler.github.io/mtgproxy)
 
+![Build to Github Pages](https://github.com/fklingler/mtgproxy/workflows/Build%20to%20Github%20Pages/badge.svg?branch=master)
+
 [A simple website](https://fklingler.github.io/mtgproxy) to make text proxies of your Magic: The Gathering cards.
 
 It uses the amazing [Scryfall](https://www.scryfall.com) API.
