@@ -1,4 +1,4 @@
-name: CI
+name: Build to Github Pages
 
 on:
   push:
@@ -10,12 +10,23 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Build
-        run: |
-          yarn install
-          yarn build
+      - name: Checkout
+        uses: action/checkout@v2.0.0
+        with:
+          ref: master
 
-      - name: Github Pages
+      - name: Setup node
+        uses: actions/setup-node@v1.1.0
+        with:
+          node-version: 'lts'
+      
+      - name: Install dependencies
+        run: yarn install
+       
+      - name: Build
+        run: yarn build
+
+      - name: Deploy to Github Pages
         uses: crazy-max/ghaction-github-pages@v1.3.0
         with:
           # Git branch where assets will be deployed
