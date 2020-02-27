@@ -37,7 +37,13 @@ class IndexFormElement extends LitElement {
     render() {
         return html`
         <form action="results.html" method="get">
-            <textarea name="cards" class="cards"></textarea>
+            <textarea name="cards" class="cards">
+1 Black Lotus
+2x Birds of Paradise
+Oko, Thief of Crowns
+Bolas's Citadel
+Realm-Cloaked Giant // Cast Off
+            </textarea>
             <button type="submit">Get the proxies!</button>
         </form>
         `;
