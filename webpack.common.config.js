@@ -6,7 +6,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 module.exports = {
     entry: {
         index: "./src/index.ts",
-        result: "./src/result.ts"
+        results: "./src/results.ts"
     },
     module: {
         rules: [
@@ -36,11 +36,11 @@ module.exports = {
             chunks: ["index"]
         }),
         new HtmlWebpackPlugin({
-            filename: "result.html",
-            template: "src/result.html",
+            filename: "results.html",
+            template: "src/results.html",
             alwaysWriteToDisk: true,
             minify: false,
-            chunks: ["result"]
+            chunks: ["results"]
         }),
         new CopyWebpackPlugin([
             {
