@@ -42,8 +42,8 @@ class IndexFormElement extends LitElement {
 2x Birds of Paradise
 Oko, Thief of Crowns
 Bolas's Citadel
-Realm-Cloaked Giant // Cast Off
-            </textarea>
+Realm-Cloaked Giant // Cast Off</textarea>
+            
             <button type="submit">Get the proxies!</button>
         </form>
         `;
