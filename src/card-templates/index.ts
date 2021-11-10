@@ -1,5 +1,6 @@
 import { ScryfallCard, ScryfallLayout } from '../scryfall';
 import { layoutFlip } from './layout-flip';
+import { layoutModalDfc } from './layout-modal-dfc';
 import { layoutNormal } from './layout-normal';
 import { layoutSplit } from './layout-split';
 import { layoutTransform } from './layout-transform';
@@ -22,6 +23,9 @@ export function cardTemplate(card: ScryfallCard) {
     }
     if (card.layout == 'transform') {
         return layoutTransform(card);
+    }
+    if (card.layout == 'modal_dfc') {
+        return layoutModalDfc(card);
     }
     if (brokenLayouts.includes(card.layout)) {
         throw new Error('Layout not supported');

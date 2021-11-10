@@ -73,5 +73,9 @@ export enum ScryfallLayout {
     /**
      * A Magic card with two sides that are unrelated.
      */
-    double_sided = "double_sided"
+    double_sided = "double_sided",
+    /**
+     * Modal DFCs
+     */
+    modal_dfc = "modal_dfc"
 }
