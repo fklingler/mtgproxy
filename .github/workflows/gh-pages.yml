@@ -27,7 +27,7 @@ jobs:
         run: yarn build
 
       - name: Deploy to Github Pages
-        uses: crazy-max/ghaction-github-pages@v1.3.0
+        uses: crazy-max/ghaction-github-pages@v2
         if: success()
         with:
           # Git branch where assets will be deployed
@@ -37,4 +37,4 @@ jobs:
           # Build directory to deploy
           build_dir: dist
         env: 
-          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
