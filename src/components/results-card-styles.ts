@@ -43,6 +43,7 @@ p {
 }
 
 .split_left {
+    max-height: 50%;
 }
 
 .flip_top {
