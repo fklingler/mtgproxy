@@ -11,24 +11,23 @@ jobs:
     
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.0.0
+        uses: actions/checkout@v3
         with:
           ref: master
 
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '20'
       
       - name: Install dependencies
-        run: yarn install
+        run: npm install
        
       - name: Build
-        run: yarn build
+        run: npm run build
 
       - name: Deploy to Github Pages
-        uses: crazy-max/ghaction-github-pages@v2
-        if: success()
+        uses: crazy-max/ghaction-github-pages@v4
         with:
           # Git branch where assets will be deployed
           target_branch: gh-pages

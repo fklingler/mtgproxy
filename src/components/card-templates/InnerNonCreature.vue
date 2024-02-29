@@ -1,0 +1,13 @@
+<script setup lang=ts>
+import { defineProps } from 'vue'
+import { ScryfallCard, ScryfallCardFace } from '../../scryfall'
+import InnerBase from './InnerBase.vue'
+
+defineProps<{
+    face: ScryfallCard | ScryfallCardFace
+}>()
+</script>
+
+<template>
+    <InnerBase :face="face" />
+</template>
