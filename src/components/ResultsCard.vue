@@ -4,7 +4,8 @@ import { ScryfallCard, ScryfallError } from '../scryfall'
 import { cardTemplate } from './card-templates/index'
 
 const props = defineProps<{
-    name: string,
+    query: string,
+    fuzzySearch: boolean,
     count: number
 }>()
 
@@ -20,11 +21,21 @@ async function fetchCard(onCleanup: (cleanupFn: () => void) => void) {
 
     onCleanup(() => abortController.abort())
 
-    const response = await fetch(
-        `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(props.name)}`,
-        { signal: abortController.signal })
+    if (props.fuzzySearch) {
+        const response = await fetch(
+            `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(props.query)}`,
+            { signal: abortController.signal })
 
-    card.value = await response.json()
+        card.value = await response.json()
+    } else {
+        const response = await fetch(
+            `https://api.scryfall.com/cards/search?q=${encodeURIComponent(props.query)}`,
+            { signal: abortController.signal })
+
+        const responseJson = await response.json()
+        
+        card.value = responseJson.object == 'list' ? responseJson.data[0] : responseJson
+    }
 
     loading.value = false
 }
@@ -37,7 +48,7 @@ async function fetchCard(onCleanup: (cleanupFn: () => void) => void) {
         </div>
 
         <div v-else-if="!card || card.object == 'error'" class="card_frame dont_print">
-            <p class="card_not_found">Card "{{ name }}" not found.<br><br><i>This will not be printed.</i></p>
+            <p class="card_not_found">Card "{{ query }}" not found.<br><br><i>This will not be printed.</i></p>
         </div>
 
         <component v-else :is="cardTemplate(card)" :card="card" />

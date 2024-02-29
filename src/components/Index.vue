@@ -11,6 +11,7 @@ const cardsListInput = ref(`
 Oko, Thief of Crowns
 Bolas's Citadel
 Realm-Cloaked Giant // Cast Off
+2x ? Soldier type:token o:haste
 `.trim());
 
 function onSubmit() {

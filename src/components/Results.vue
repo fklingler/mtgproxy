@@ -5,7 +5,7 @@ import { resultsConfig } from './results-config'
 import ResultsCard from './ResultsCard.vue'
 import ResultsConfig from './ResultsConfig.vue'
 
-type Cards = Array<{ name: string, count: number }>
+type Cards = Array<{ query: string, fuzzySearch: boolean, count: number }>
 
 const cards = ref<Cards>([])
 
@@ -26,14 +26,15 @@ function splitCardsInput(input: string): Cards {
     // Foreach line in input
     return input.match(/[^\r\n]+/g)?.map(line => {
         // Match count and name of card
-        const regex = /^((?<count>[\d]+)x?\s)?(?<name>.+)/gi
+        const regex = /^((?<count>[\d]+)x?\s)?(?<queryMarker>\?)?(?<query>.+)/gi
         const match = regex.exec(line.trim())
 
         if (!match?.groups) { return undefined }
 
         return {
             count: parseInt(match.groups.count ?? '1', 10),
-            name: match.groups.name
+            query: match.groups.query,
+            fuzzySearch: !match.groups.queryMarker
         }
     }).filter(match => !!match) as Cards
 }
@@ -48,7 +49,7 @@ function splitCardsInput(input: string): Cards {
         :class="[resultsConfig.displayReminderText ? '' : 'hide_reminder_text']"
         :contenteditable="resultsConfig.editableContent">
 
-        <ResultsCard v-for="card in cards" :name="card.name" :count="card.count"></ResultsCard>
+        <ResultsCard v-for="card in cards" :query="card.query" :fuzzySearch="card.fuzzySearch" :count="card.count"></ResultsCard>
     </div>
 </template>
 
