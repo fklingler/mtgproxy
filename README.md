@@ -1,18 +1,21 @@
-# Vue 3 + TypeScript + Vite
+# [MTG Proxy](https://fklingler.github.io/mtgproxy)
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+![Build to Github Pages](https://github.com/fklingler/mtgproxy/workflows/Build%20to%20Github%20Pages/badge.svg?branch=master)
 
-## Recommended IDE Setup
+[A simple website](https://fklingler.github.io/mtgproxy) to make text proxies of your Magic: The Gathering cards.
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+It uses the amazing [Scryfall](https://www.scryfall.com) API.
+Thanks to [Harubex](https://github.com/Harubex) and its [scryfall](https://github.com/Harubex/scryfall) project for the [types](https://github.com/Harubex/scryfall/tree/master/src).
 
-## Type Support For `.vue` Imports in TS
+It is inspired by the [proxygen project by Dryvnt](https://gitlab.com/Dryvnt/proxygen). The card templates are directly adapted from this project.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+## Development
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+`npm install`  
+`npm run dev`
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## Build
+
+`npm run build`
+
+It is built automatically by Github Actions, so you can always find the master version on [https://fklingler.github.io/mtgproxy](https://fklingler.github.io/mtgproxy).
