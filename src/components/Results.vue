@@ -1,7 +1,9 @@
 <script setup lang=ts>
 import { ref } from 'vue'
 import { onBeforeRouteUpdate, useRoute, RouteLocation } from 'vue-router'
+import { resultsConfig } from './results-config'
 import ResultsCard from './ResultsCard.vue'
+import ResultsConfig from './ResultsConfig.vue'
 
 type Cards = Array<{ name: string, count: number }>
 
@@ -35,11 +37,19 @@ function splitCardsInput(input: string): Cards {
         }
     }).filter(match => !!match) as Cards
 }
-
 </script>
 
 <template>
-    <ResultsCard v-for="card in cards" :name="card.name" :count="card.count"></ResultsCard>
+    <div class="config">
+        <ResultsConfig />
+    </div>
+
+    <div
+        :class="[resultsConfig.displayReminderText ? '' : 'hide_reminder_text']"
+        :contenteditable="resultsConfig.editableContent">
+
+        <ResultsCard v-for="card in cards" :name="card.name" :count="card.count"></ResultsCard>
+    </div>
 </template>
 
 <style>
@@ -50,6 +60,16 @@ function splitCardsInput(input: string): Cards {
 
 * {
     box-sizing: border-box;
+}
+
+.config {
+    margin-bottom: 1em;
+}
+
+@media print {
+    .config {
+        display: none;
+    }
 }
 
 body {

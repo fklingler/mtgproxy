@@ -67,7 +67,6 @@ p {
     page-break-inside: avoid;
     overflow: hidden;
     
-    font-family: 'Open Sans', sans-serif;
     font-size: 3.75mm;
     line-height: 100%;
     text-rendering: geometricPrecision;
@@ -122,6 +121,10 @@ p {
 .oracle_div {
     font-size: 2.75mm;
     flex: 1 1 auto;
+}
+
+.hide_reminder_text .reminder_text {
+    display: none;
 }
 
 .power_toughness {

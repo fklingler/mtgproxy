@@ -36,7 +36,6 @@ function onSubmit() {
 
 <style scoped>
 * {
-  font-family: 'Open Sans', sans-serif;
   margin: 0 0 1em;
   padding: 0;
   border: 0;
