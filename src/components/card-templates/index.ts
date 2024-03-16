@@ -7,7 +7,6 @@ import LayoutFlip from './LayoutFlip.vue'
 import LayoutDoubleFaced from './LayoutDoubleFaced.vue'
 import LayoutNormal from './LayoutNormal.vue'
 import LayoutSplit from './LayoutSplit.vue'
-import LayoutTransform from './LayoutTransform.vue'
 
 const brokenLayouts: ScryfallLayout[] = [
     ScryfallLayout.vanguard
@@ -25,7 +24,6 @@ export function cardTemplate(card: ScryfallCard) {
         case ScryfallLayout.flip:
             return LayoutFlip
         case ScryfallLayout.transform:
-            return LayoutTransform
         case ScryfallLayout.modal_dfc:
         case ScryfallLayout.double_faced_token:
             return LayoutDoubleFaced
